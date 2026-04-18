@@ -1,0 +1,12 @@
+langgraph
+langchain
+ollama
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+requests
+python-telegram-bot
+pandas
+numpy
+docker
