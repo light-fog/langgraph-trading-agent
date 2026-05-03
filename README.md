@@ -1,22 +1,16 @@
-# langgraph-trading-agent
-AI trading agent with LangGraph, Ollama, Bybit API and Telegram notifications 
-# 🤖 LangGraph Trading Agent
 
-AI-агент для криптотрейдинга: получает цену BTC через Bybit, анализирует через локальные LLM (Ollama), выдаёт сигналы и отправляет в Telegram.
+# 🤖 Multi‑Market AI Trading Agent
 
-## 🚀 Стек
-- LangGraph — оркестрация агентов
-- Ollama (Mistral, LLama, DeepSeek) — локальные LLM
-- Bybit API — рыночные данные
-- Telegram API — уведомления
-- Docker + PostgreSQL — память и логи
+**AI agent for market analysis and generating trading signals (BUY/SELL/HOLD).**  
+Built with **LangGraph**, runs local LLMs via **Ollama**, stores data in **PostgreSQL**, memory in **Qdrant**, notifications in **Telegram**.
 
-## 📦 Установка и запуск
-1. Клонируй репозиторий
-2. Установи зависимости: `pip install -r requirements.txt`
-3. Запусти агента: `python main.py`
+## 🏗️ Architecture
 
-## 🔮 Планы
-- Multi-agent система (sbornik + dipkvant)
-- RAG с Qdrant
-- Поддержка ETH, SOL, акций
+```mermaid
+graph TD
+    A[fetch_price_node] --> B[analyze_node]
+    B --> C[save_node]
+    C --> D{should_notify}
+    D -->|BUY/SELL| E[notify_node]
+    D -->|HOLD| F[END]
+    E --> F
